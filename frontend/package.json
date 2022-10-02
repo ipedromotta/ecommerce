@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "bulma": "^0.9.4",
+    "bulma-toast": "^2.4.1",
     "pinia": "^2.0.21",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
