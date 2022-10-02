@@ -1,5 +1,6 @@
 backend
 para ativar o ambiente virtual: pipenv shell e para instalar as dependencias pipenv install --dev
+depois utilize o comando pipenv python manage.py makemigrations para criar novas migrações para alterar ou criar a estrutura do banco de dados e depois pipenv manage.py migrate para criar as tabelas
 Módulos utilizados:
 - django rest framework para criação da API
 - cors-hearders para disponibilidade da API para o frontend
