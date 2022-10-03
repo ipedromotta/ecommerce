@@ -36,25 +36,31 @@
 
 <script setup>
 import axios from 'axios';
-import { onMounted, ref } from 'vue';
+import { onBeforeMount, onMounted, ref } from 'vue';
 import { usePageStore } from '../stores/page';
 
 const ultimosProdutos = ref([])
 const pageStore = usePageStore()
 
-function obterUltimosProdutos() {
-  axios.get('/api/v1/latest-products')
+async function obterUltimosProdutos() {
+  pageStore.setIsLoading(true)
+
+  await axios.get('/api/v1/latest-products')
     .then((res) => {
       ultimosProdutos.value = res.data
     })
     .catch((error) => {
       console.log(error)
     })
+  
+  pageStore.setIsLoading(false)
 }
 
 onMounted(() =>{
+  document.title = 'Lojas Pedro'
+  
   obterUltimosProdutos()
-  pageStore.initializeStore()
+  // pageStore.initializeStore()
 })
 
 </script>

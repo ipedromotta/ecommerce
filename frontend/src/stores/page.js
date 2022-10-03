@@ -35,16 +35,13 @@ export const usePageStore = defineStore('page', () => {
     for (let i = 0; i < cart.value.items.length; i++) {
       carrinhoTotalItens.value += cart.value.items[i].quantity
     }
-
+    
     return carrinhoTotalItens.value
   })
 
-  return { initializeStore, addToCart, carrinhoTotal }
-  // const count = ref(0)
-  // const doubleCount = computed(() => count.value * 2)
-  // function increment() {
-  //   count.value++
-  // }
+  function setIsLoading(state) {
+    isLoading.value = state
+  }
 
-  // return { count, doubleCount, increment }
+  return { initializeStore, addToCart, carrinhoTotal, setIsLoading, isLoading }
 })

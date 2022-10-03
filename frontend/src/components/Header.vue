@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar is-dark">
     <div class="navbar-brand">
-      <RouterLink to="/" class="navbar-item"><strong>Loja Pedros</strong></RouterLink>
+      <RouterLink to="/" class="navbar-item"><strong>Lojas Pedro</strong></RouterLink>
       <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>

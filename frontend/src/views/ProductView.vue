@@ -47,17 +47,22 @@ const quantidade = ref(1)
 const router = useRouter()
 const pageStore = usePageStore()
 
-function obterProdutos() {
+async function obterProdutos() {
+  pageStore.setIsLoading(true)
   const category_slug = router.currentRoute.value.params.category_slug
   const product_slug = router.currentRoute.value.params.product_slug
 
-  axios.get(`api/v1/products/${category_slug}/${product_slug}`)
+  await axios.get(`api/v1/products/${category_slug}/${product_slug}`)
     .then((res) => {
       produto.value = res.data
+
+      document.title = produto.value.name + ' | Lojas Pedro'
     })
     .catch((error) => {
       console.log(error)
     })
+  
+  pageStore.setIsLoading(false)
 }
 
 function addToCart() {
