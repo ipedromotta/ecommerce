@@ -18,7 +18,7 @@
 
           <tbody>
             <CartItem
-              v-for="item in cart.items"
+              v-for="item in pageStore.cart.items"
               :key="item.product.id"
               :initialItem="item"
             />
@@ -40,27 +40,24 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { onMounted, computed } from 'vue';
 import CartItem from '@/components/CartItem.vue'
 import { usePageStore } from '../stores/page';
 
 const pageStore = usePageStore()
-const cart = ref({
-  items: []
-})
 
 onMounted(() => {
   document.title = 'Carrinho | Lojas Pedro'
-  cart.value = pageStore.cart
 })
+
 const cartTotalLength = computed(() => {
-  return cart.value.items.reduce((acc, curVal) => {
+  return pageStore.cart.items.reduce((acc, curVal) => {
     return acc += curVal.quantity
   }, 0)
 })
 
 const cartTotalPrice = computed(() => {
-  return cart.value.items.reduce((acc, curVal) => {
+  return pageStore.cart.items.reduce((acc, curVal) => {
     return acc += curVal.product.price * curVal.quantity
   }, 0)
 })

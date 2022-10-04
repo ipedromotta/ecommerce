@@ -24,7 +24,7 @@
       :key="product.id"
       :product="product"
     />
-    
+
   </div>
 </template>
 
@@ -47,15 +47,13 @@ async function obterUltimosProdutos() {
     .catch((error) => {
       console.log(error)
     })
-  
+
   pageStore.setIsLoading(false)
 }
 
 onMounted(() =>{
   document.title = 'Lojas Pedro'
-  
   obterUltimosProdutos()
-  // pageStore.initializeStore()
 })
 
 </script>

@@ -3,6 +3,14 @@
   import Header from './components/Header.vue';
   import Footer from './components/Footer.vue';
   import Loading from './components/Loading.vue';
+  import { usePageStore } from './stores/page';
+  import { onMounted } from 'vue';
+
+  const pageStore = usePageStore()
+
+  onMounted(() => {
+    pageStore.initializeStore()
+  })
 </script>
 
 <template>

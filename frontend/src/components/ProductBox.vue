@@ -14,16 +14,8 @@
 </template>
 
 <script setup>
-import { watch } from 'vue';
-import { useRouter } from 'vue-router';
-
-const router = useRouter()
 const props = defineProps({
   product: Object
-})
-
-watch(() => router.currentRoute.value.name, () => {
-  console.log('funfou')
 })
 </script>
 
