@@ -19,25 +19,20 @@
       </div>
     </div>
 
-    <div class="column is-3" v-for="produto in ultimosProdutos" :key="produto.id">
-      <div class="box">
-        <figure class="image mb-4">
-          <img :src="produto.get_thumbnail" alt="thumbnail">
-        </figure>
-
-        <h3 class="is-size-4">{{ produto.name }}</h3>
-        <p class="is-size-6 has-text-gray">R${{ produto.price }}</p>
-
-        <RouterLink :to="produto.get_absolute_url" class="button is-dark mt-4">Ver detalhes</RouterLink>
-      </div>
-    </div>
+    <ProductBox
+      v-for="product in ultimosProdutos"
+      :key="product.id"
+      :product="product"
+    />
+    
   </div>
 </template>
 
 <script setup>
 import axios from 'axios';
-import { onBeforeMount, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { usePageStore } from '../stores/page';
+import ProductBox from '../components/ProductBox.vue';
 
 const ultimosProdutos = ref([])
 const pageStore = usePageStore()
@@ -64,12 +59,3 @@ onMounted(() =>{
 })
 
 </script>
-
-<style scoped>
-.image {
-  margin-top: -1.25rem;
-  margin-left: -1.25rem;
-  margin-bottom: -1.25rem;
-}
-
-</style>
