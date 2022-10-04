@@ -29,6 +29,10 @@ export const usePageStore = defineStore('page', () => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }
 
+  function removeFromCart(item) {
+    cart.value.items = cart.value.items.filter(i => i.product.id !== item.product.id)
+  }
+
   const carrinhoTotal = computed(() => {
     const carrinhoTotalItens = ref(0)
 
@@ -43,5 +47,5 @@ export const usePageStore = defineStore('page', () => {
     isLoading.value = state
   }
 
-  return { initializeStore, addToCart, carrinhoTotal, setIsLoading, isLoading }
+  return { initializeStore, cart, addToCart, removeFromCart, carrinhoTotal, setIsLoading, isLoading }
 })
