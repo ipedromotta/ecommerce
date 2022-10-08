@@ -31,7 +31,6 @@ export const usePageStore = defineStore('page', () => {
 
   function removeFromCart(item) {
     cart.value.items = cart.value.items.filter(i => i.product.id !== item.product.id)
-    console.log(cart.value)
     localStorage.setItem('cart', JSON.stringify(cart.value))
   }
 
