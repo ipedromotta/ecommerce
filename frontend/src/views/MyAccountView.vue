@@ -16,6 +16,7 @@
 
 <script setup>
 import axios from 'axios';
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { usePageStore } from '../stores/page';
 
@@ -33,4 +34,8 @@ function logout() {
 
   router.push('/')
 }
+
+onMounted(() => {
+  document.title = "Minha conta | Lojas Pedro"
+})
 </script>

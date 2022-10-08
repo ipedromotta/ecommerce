@@ -8,6 +8,8 @@ import CartView from '@/views/CartView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import LoginView from '@/views/LoginView.vue'
 import MyAccountView from '@/views/MyAccountView.vue'
+import CheckoutView from '@/views/CheckoutView.vue'
+import SuccessView from '@/views/SuccessView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +46,19 @@ const router = createRouter({
       meta: {
         requireLogin: true
       }
+    },
+    {
+      path: '/carrinho/checkout',
+      name: 'checkout',
+      component: CheckoutView,
+      meta: {
+        requireLogin: true
+      }
+    },
+    {
+      path: '/carrinho/sucesso',
+      name: 'sucess',
+      component: SuccessView
     },
     {
       path: '/:category_slug/:product_slug',

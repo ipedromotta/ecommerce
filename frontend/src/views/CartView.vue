@@ -33,7 +33,7 @@
         <strong>R$ {{ cartTotalPrice.toFixed(2) }}</strong>, {{ cartTotalLength }} itens
         <hr>
 
-        <RouterLink to="/cart/checkout" class="button is-dark">Prosseguir para o checkout</RouterLink>
+        <RouterLink to="/carrinho/checkout" class="button is-dark">Prosseguir para o checkout</RouterLink>
       </div>
     </div>
   </div>

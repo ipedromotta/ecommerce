@@ -52,6 +52,12 @@ export const usePageStore = defineStore('page', () => {
     localStorage.setItem('cart', JSON.stringify(cart.value))
   }
 
+  function clearCart() {
+    cart.value = { items: [] }
+    
+    localStorage.setItem('cart', JSON.stringify(cart.value))
+  }
+
   const carrinhoTotal = computed(() => {
     const carrinhoTotalItens = ref(0)
 
@@ -65,5 +71,5 @@ export const usePageStore = defineStore('page', () => {
     isLoading.value = state
   }
 
-  return { initializeStore, cart, addToCart, removeFromCart, carrinhoTotal, setIsLoading, isLoading, token, setToken, removeToken, isAuthenticated }
+  return { initializeStore, cart, addToCart, removeFromCart, carrinhoTotal, clearCart, setIsLoading, isLoading, token, setToken, removeToken, isAuthenticated }
 })
