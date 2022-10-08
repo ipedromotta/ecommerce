@@ -4,8 +4,8 @@
     <td>R$ {{ props.initialItem.product.price }}</td>
     <td>
       {{ props.initialItem.quantity }}
-      <a @click="decrementQuantity(props.initialItem)">-</a>
-      <a @click="incrementQuantity(props.initialItem)">+</a>
+      <a @click="decrementQuantity(props.initialItem)" class="button">-</a>
+      <a @click="incrementQuantity(props.initialItem)" class="button">+</a>
     </td>
     <td>R$ {{ getItemTotal(props.initialItem).toFixed(2) }}</td>
     <td><button class="delete" @click="pageStore.removeFromCart(props.initialItem)"></button></td>
