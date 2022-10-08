@@ -10,18 +10,32 @@
           Sair
         </button>
       </div>
+
+      <hr>
+
+      <div class="column is-12">
+        <h2 class="subtitle">Meus pedidos</h2>
+
+        <OrderSummary
+          v-for="order in orders"
+          :key="order.id"
+          :order="order" />
+
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import axios from 'axios';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { usePageStore } from '../stores/page';
+import OrderSummary from '../components/OrderSummary.vue';
 
 const storePage = usePageStore()
 const router = useRouter()
+const orders = ref([])
 
 function logout() {
   axios.defaults.headers.common["Authorization"] = ""
@@ -35,7 +49,23 @@ function logout() {
   router.push('/')
 }
 
+async function getMyOrders() {
+  storePage.setIsLoading(true)
+
+  await axios.get('/api/v1/orders/')
+    .then((res) => {
+      orders.value = res.data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
+  storePage.setIsLoading(false)
+}
+
 onMounted(() => {
   document.title = "Minha conta | Lojas Pedro"
+
+  getMyOrders()
 })
 </script>
