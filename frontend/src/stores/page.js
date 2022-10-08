@@ -30,7 +30,7 @@ export const usePageStore = defineStore('page', () => {
     isAuthenticated.value = true
   }
 
-  function removetoken(tokenValue) {
+  function removeToken() {
     token.value = ''
     isAuthenticated.value = false
   }
@@ -65,5 +65,5 @@ export const usePageStore = defineStore('page', () => {
     isLoading.value = state
   }
 
-  return { initializeStore, cart, addToCart, removeFromCart, carrinhoTotal, setIsLoading, isLoading, token, setToken }
+  return { initializeStore, cart, addToCart, removeFromCart, carrinhoTotal, setIsLoading, isLoading, token, setToken, removeToken, isAuthenticated }
 })

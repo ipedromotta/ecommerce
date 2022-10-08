@@ -36,7 +36,13 @@
 
         <div class="navbar-item">
           <div class="buttons">
-            <RouterLink to="/login" class="button is-light">Entrar</RouterLink>
+            <RouterLink v-if="pageStore.isAuthenticated" to="/minha-conta" class="button is-light">
+              Minha conta
+            </RouterLink>
+            <RouterLink v-else to="/login" class="button is-light">
+              Entrar
+            </RouterLink>
+
             <RouterLink to="/carrinho" class="button is-success">
               <span class="icon"><i class="fas fa-shopping-cart"></i></span>
               <span>Carrinho ({{ pageStore.carrinhoTotal }})</span>
