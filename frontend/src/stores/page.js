@@ -15,6 +15,24 @@ export const usePageStore = defineStore('page', () => {
     } else {
       localStorage.setItem('cart', JSON.stringify(cart.value))
     }
+
+    if (localStorage.getItem('token')) {
+      token.value = localStorage.getItem('token')
+      isAuthenticated.value = true
+    } else {
+      token.value = ''
+      isAuthenticated.value = false
+    }
+  }
+
+  function setToken(tokenValue) {
+    token.value = tokenValue
+    isAuthenticated.value = true
+  }
+
+  function removetoken(tokenValue) {
+    token.value = ''
+    isAuthenticated.value = false
   }
 
   function addToCart(item) {
@@ -47,5 +65,5 @@ export const usePageStore = defineStore('page', () => {
     isLoading.value = state
   }
 
-  return { initializeStore, cart, addToCart, removeFromCart, carrinhoTotal, setIsLoading, isLoading }
+  return { initializeStore, cart, addToCart, removeFromCart, carrinhoTotal, setIsLoading, isLoading, token, setToken }
 })

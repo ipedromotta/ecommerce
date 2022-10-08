@@ -36,7 +36,7 @@
 
         <div class="navbar-item">
           <div class="buttons">
-            <RouterLink to="/log-in" class="button is-light">Entrar</RouterLink>
+            <RouterLink to="/login" class="button is-light">Entrar</RouterLink>
             <RouterLink to="/carrinho" class="button is-success">
               <span class="icon"><i class="fas fa-shopping-cart"></i></span>
               <span>Carrinho ({{ pageStore.carrinhoTotal }})</span>
