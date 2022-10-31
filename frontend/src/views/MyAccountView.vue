@@ -33,24 +33,27 @@ import { useRouter } from 'vue-router';
 import { usePageStore } from '../stores/page';
 import OrderSummary from '../components/OrderSummary.vue';
 
-const storePage = usePageStore()
+const pageStore = usePageStore()
 const router = useRouter()
 const orders = ref([])
 
 function logout() {
-  axios.defaults.headers.common["Authorization"] = ""
+  
+  const token = localStorage.getItem('token')
 
   localStorage.removeItem("token")
-  localStorage.removeItem("username")
-  localStorage.removeItem("userid")
-
-  storePage.removeToken()
-
+  axios.post('/api/v1/token/logout/', token)
+    .catch((error) => {
+      console.log(error)
+    })
+  
+  axios.defaults.headers.common["Authorization"] = ""
+  pageStore.removeToken()
   router.push('/')
 }
 
 async function getMyOrders() {
-  storePage.setIsLoading(true)
+  pageStore.setIsLoading(true)
 
   await axios.get('/api/v1/orders/')
     .then((res) => {
@@ -60,7 +63,7 @@ async function getMyOrders() {
       console.log(error)
     })
 
-  storePage.setIsLoading(false)
+  pageStore.setIsLoading(false)
 }
 
 onMounted(() => {
