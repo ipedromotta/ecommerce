@@ -8,14 +8,14 @@
             <div class="field">
               <label>Usuario</label>
               <div class="control">
-                <input type="text" class="input" v-model="info.username">
+                <input @input="info.errors=[]" type="text" class="input" v-model="info.username">
               </div>
             </div>
 
             <div class="field">
               <label>Senha</label>
               <div class="control">
-                <input type="password" class="input" v-model="info.password">
+                <input @input="info.errors=[]" type="password" class="input" v-model="info.password">
               </div>
             </div>
 
@@ -78,7 +78,7 @@ async function submitForm() {
     .catch((error) => {
       if (error.response) {
         for (const property in error.response.data) {
-          info.value.errors.push(`${property}: ${error.response.data[property]}`)
+          info.value.errors.push(`${error.response.data[property]}`)
         }
       } else {
         info.value.errors.push('Algo deu errado. Por favor tente novamente')
