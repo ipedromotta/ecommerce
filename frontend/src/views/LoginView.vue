@@ -67,8 +67,8 @@ async function submitForm() {
 
       pageStore.setToken(token)
 
-      axios.defaults.headers.common["Authorization"] = "Token" + token
-
+      axios.defaults.headers.common["Authorization"] = `Token ${token}`
+      
       localStorage.setItem("token", token)
 
       const toPath = router.currentRoute.value.query.to || '/carrinho'

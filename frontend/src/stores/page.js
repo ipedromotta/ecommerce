@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import axios from 'axios'
 
 export const usePageStore = defineStore('page', () => {
   const cart = ref({
@@ -18,10 +19,22 @@ export const usePageStore = defineStore('page', () => {
 
     if (localStorage.getItem('token')) {
       token.value = localStorage.getItem('token')
-      isAuthenticated.value = true
+
+      axios.defaults.headers.common["Authorization"] = `Token ${token.value}`
+      
+      axios.get('/api/v1/users/me/')
+        .then((res) => {
+          setToken(token.value)
+        })
+        .catch((error) => {
+          console.log(token.value)
+          console.log(error.response.data)
+          removeToken()
+          localStorage.removeItem('token')
+        })
+
     } else {
-      token.value = ''
-      isAuthenticated.value = false
+      removeToken()
     }
   }
 
