@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import { useRouter } from 'vue-router'
 
 export const usePageStore = defineStore('page', () => {
   const cart = ref({
@@ -9,6 +10,7 @@ export const usePageStore = defineStore('page', () => {
   const isAuthenticated = ref(false)
   const token = ref('')
   const isLoading = ref(false)
+  const router = useRouter()
 
   function initializeStore() {
     if (localStorage.getItem('cart')) {
@@ -23,15 +25,12 @@ export const usePageStore = defineStore('page', () => {
       axios.defaults.headers.common["Authorization"] = `Token ${token.value}`
       
       axios.get('/api/v1/users/me/')
-        .then((res) => {
-          setToken(token.value)
-        })
         .catch((error) => {
-          console.log(token.value)
-          console.log(error.response.data)
           removeToken()
           localStorage.removeItem('token')
+          router.push('/')
         })
+      setToken(token.value)
 
     } else {
       removeToken()
