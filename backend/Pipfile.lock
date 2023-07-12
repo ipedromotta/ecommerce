@@ -153,7 +153,7 @@
                 "sha256:d9e69ae01f99abe6ad646947bba8941e896cb3aa805be2597a0400e0764b5818"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==38.0.1"
+            "version": "==41.0.0"
         },
         "defusedxml": {
             "hashes": [
