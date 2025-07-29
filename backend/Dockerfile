@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY Pipfile Pipfile.lock ./
 
+ENV BASE_URL=http://localhost
+
 # Instala dependências do sistema
 RUN apt-get update && apt-get install -y build-essential libpq-dev
 
