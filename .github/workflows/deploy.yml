@@ -13,17 +13,16 @@ jobs:
         uses: actions/checkout@v3
 
       # Backend tests
-      - name: 📦 Instalar dependências backend
+      - name: 📦 Instalar dependências e ativar ambiente virtual backend
         working-directory: ./backend
         run: |
-          python3 -m venv venv
-          source venv/bin/activate
+          pip install pipenv
+          pipenv shell
           pipenv install --dev
 
       - name: 🧪 Rodar testes Django
         working-directory: ./backend
         run: |
-          source venv/bin/activate
           python manage.py test
 
       # Frontend (opcional)
