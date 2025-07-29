@@ -62,7 +62,7 @@ Para iniciar o backend localmente, siga os passos abaixo:
 A API estará disponível em:
 🔗 http://localhost:8000/api/v1/
 
-🧩 Principais bibliotecas utilizadas no backend
+## 🧩 Principais bibliotecas utilizadas no backend
 - stripe: Integração com pagamentos online (web e mobile).
 
 - djoser: Gerencia autenticação com endpoints prontos para registro, login, logout, redefinição de senha e ativação de conta (utiliza Django REST Framework).
