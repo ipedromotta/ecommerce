@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: 🔍 Checkout código
         uses: actions/checkout@v3
+        with:
+          python-version: '3.10'
 
       # Backend tests
       - name: 📦 Instalar dependências e ativar ambiente virtual backend
