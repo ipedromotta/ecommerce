@@ -1,5 +1,5 @@
 <h1 align="center">
- <img src="https://github.com/ipedromotta/VueJS-Flask/blob/main/frontend/src/assets/logo-python.png" width="50"> <img src="https://github.com/ipedromotta/VueJS-Flask/blob/main/frontend/src/assets/logo.png" width="55"><br>Ecommerce completo utilizando Django e VueJS
+ <img src="https://github.com/ipedromotta/VueJS-Flask/blob/main/frontend/src/assets/logo-python.png" width="50"> <img src="https://github.com/ipedromotta/VueJS-Flask/blob/main/frontend/src/assets/logo.png" width="55"><br>Ecommerce completo utilizando Django e Vue.js
 </h1>
 
 ## :page_facing_up: Sobre #
@@ -20,6 +20,6 @@ Esta aplicação conta com um sistema de login completo, carrinho de compras e i
 Para o desenvolvimento desse projeto foram utilizadas as seguintes tecnologias:
 
 * Django;
-* VueJS;
+* Vue.js;
 * Bulma CSS;
 * FontAwesome ( Implementação feita através do link para o CDN no index.html ).
