@@ -27,6 +27,7 @@ jobs:
       - name: 📦 Instalar dependências backend
         working-directory: ./backend
         run: |
+          uv venv
           uv pip install -r requirements.txt
 
       # 5️⃣ Roda testes Django com o uv (sem precisar ativar venv)
