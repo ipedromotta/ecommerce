@@ -11,14 +11,15 @@ RUN apt-get update && apt-get install -y build-essential libpq-dev
 
 RUN pip install --upgrade pip && pip install uv
 
-# Instala dependências com uv
-RUN uv venv && uv pip install -r requirements.txt
+# Instala dependências diretamente no sistema (sem venv)
+RUN uv pip install --system -r requirements.txt
 
 COPY . .
 
-# Coleta arquivos estáticos para STATIC_ROOT (de acordo com seu settings.py)
-RUN uv run python manage.py collectstatic --noinput
+# Coleta arquivos estáticos
+RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-CMD ["pipenv", "run", "gunicorn", "configs.wsgi:application", "--bind", "0.0.0.0:8000"]
+# Executa o servidor
+CMD ["gunicorn", "configs.wsgi:application", "--bind", "0.0.0.0:8000"]
