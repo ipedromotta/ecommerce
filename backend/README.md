@@ -34,13 +34,12 @@ Para iniciar o backend localmente, siga os passos abaixo:
 
 2. Instalar as dependências
 
-    Navegue até o diretório backend do projeto e instale as dependências:
+    Navegue até o diretório backend do projeto, crie o ambiente virtual e instale as dependências:
     ```
     cd backend
     uv venv
     uv pip install -r requirements.txt
     ```
-    > O uv cria o ambiente virtual automaticamente.
 
 3. Configurar o projeto Django
 
