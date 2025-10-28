@@ -37,6 +37,7 @@ Para iniciar o backend localmente, siga os passos abaixo:
     Navegue até o diretório backend do projeto e instale as dependências:
     ```
     cd backend
+    uv venv
     uv pip install -r requirements.txt
     ```
     > O uv cria o ambiente virtual automaticamente.
